@@ -1,0 +1,5 @@
+1.	Create a VPC that will have a public subnet and private subnet, and then we should be able to deploy a server into that VPC, and be able to SSH into the private subnet from the public subnet
+2.	Create a GITHUB Account
+3.	Run a Python script in our server and the script should output the result and then, we should load the result of our Python script into a .txt file, and then we should copy or move the file into an S3 Bucket in AWS
+4.	Create a CRONJOB that runs this python script every hour, and then there should be a different result for each time it runs. Each result will be in a different file that will be named result(datetime).txt and it will save it in our target folder.
+HINT: We can concatenate the file names to include the date time when we do run script >> result + 'getdate()' -> So each time we run our script it will create a new file and then attach the current time it ran the script.

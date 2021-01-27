@@ -1,1 +1,22 @@
-Deploy a cloudformation stack in AWS
+mkdir Isaac 
+cd Isaac
+aws s3 cp s3://isaacdataprocess/myscript/RandScript.py .
+chmod +x RandScript.py 
+date= $(date +%F_%H-%M-%S)
+pythonfilename=$date'-pythonrandoutput.txt'
+python RandScript.py |& tee -a result-$pythonfilename
+aws s3 cp result-$pythonfilename s3://isaacdataprocess/RandResult/
+
+cd ..
+rm -rm Isaac
+
+mkdir Isaac
+cd Isaac
+git clone https://github.com/AdeyinkaDavid/DataEngineering
+aws s3 cp cf-vpc-pub-priv-subnet.yaml s3://isaacdataprocess/cfscript/
+
+
+mkdir Isaac
+cd Isaac 
+ssh-keygen -t rsa -b 2048 -C "github.davidisaac905@outlook.com"
+

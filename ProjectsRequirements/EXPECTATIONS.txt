@@ -3,3 +3,10 @@
 3.	Run a Python script in our server and the script should output the result and then, we should load the result of our Python script into a .txt file, and then we should copy or move the file into an S3 Bucket in AWS
 4.	Create a CRONJOB that runs this python script every hour, and then there should be a different result for each time it runs. Each result will be in a different file that will be named result(datetime).txt and it will save it in our target folder.
 HINT: We can concatenate the file names to include the date time when we do run script >> result + 'getdate()' -> So each time we run our script it will create a new file and then attach the current time it ran the script.
+5. Create a virtual machine -- Linux   -> Done
+    Clone my private github repo into the directory - Cloned my github into my directory --> Done
+    After cloning -> Copy the cloudformation template file for VPC Creation into an S3 Bucket
+    Create a Stack that will create my new VPC from the cloudformation template in my S3 Bucket 
+    NOTE: My private github repo has a cloudformation inside it 
+
+6. Script expectation 5, starting from the Clone process to the Upload into AWS S3 Bucket

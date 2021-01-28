@@ -1,0 +1,27 @@
+TO CONNECT TO OUR AWS CLI:
+aws configure (Not the best due to security reasons)
+enter access key and ID from IAM 
+enter default region and Output format 
+
+To create an EC2 in our AWS CLI in our VPC:
+
+-- First we want to have our aws key pair 
+    aws ec2 create-key-pair --key-name 'second-keypair-prac' --query 'KeyMaterial' 
+    --output text > second-keypair-prac.pem
+-- Then we want to have a security group 
+        aws ec2 create-security-group --group-name SGForCFVpc 
+        --description "Security group for CF VPC" --vpc-id vpcidfromAWS
+    
+-- Then we want to Add a rule for port 22 to our security group 
+        aws ec2 authorize-security-group-ingress --group-id sg-0bad1dcb1ae404d6c --protocol tcp --port 22 --cidr 0.0.0.0/0
+        SGID: sg-0bad1dcb1ae404d6c
+SIDENOTE: Quick way to check my public ip address is by using checkip.amazonaws.com
+ 
+-- Also know AMI ID from which we will launch our instance 
+    We can check/copy the AMI ID from launching the EC2 -> ami-03c5cc3d1425c6d34
+
+-- Then we launch our Instance 
+    To launch the instance we need the AMI ID, SG ID and the Public subnet ID of our EC2
+
+aws ec2 run-instances --image-id ami-ID --count 1 --instance-type t2.micro --key-name DataEngineeringInCloud 
+--security-group-ids sg-ID --subnet-id subnet-ID

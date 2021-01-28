@@ -1,0 +1,17 @@
+ssh -i file.pem ec2-user@IP-Address -> To connect to my ec2 instance 
+./ -> To run my .sh file 
+git clone https://github.com/AdeyinkaDavid/DataEngineering.git -> To clone my github repo
+git add . -> To add the file to github repo
+git commit -m "" -> To commit the file to my github repo
+git push -> To push it completely to github 
+vi test.txt -> To create Files 
+cd .. -> To go back to the previous directory 
+ls -> To list files 
+cp sourceFilePath DestinationFilePath -> To copy a file from one filepath to another 
+aws s3 cp filename S3BucketDestination -> To copy a file to s3 bucket 
+mv sourceFilePath DestinationFilePath -> To move a file from one filepath to another 
+aws s3 mv filename S3BucketDestination -> To move a file to s3 bucket
+cd -> To change directory to any filepath 
+
+
+

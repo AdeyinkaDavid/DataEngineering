@@ -1,0 +1,22 @@
+#Step 1: Create a Folder where you will like to clone your repo into
+
+#Step 2: cd folderName
+
+#step 3: Generate a public key by running the below command on your terminal
+    >> ssh-keygen -t rsa -b 2048 -C "github.email_address@gmail.com"
+    - You will be prompted to enter the file you will like to save your private/public key. Leave that blank and hit enter (It saved to a default location)
+    - You will aklso be prompted to enter a passphrass. Also leave this empty and hit "Enter"
+    - You will be prompted again to enter the passphrase one more time. Leave it empty and hit "Enter" once again
+    - Next you should see a display imdicating the key randomart image. Now your key has been generated
+
+#Step 4: You will need to copy the public key and and save it somewhere in your github setting. Do the following
+    - Go to the directory where your public key is saved. Default should be C:\Users\name/.ssh/id_rsa.pub
+    - Right click the file named id_rsa.pub and edit with notepad. You should see the actual key generated 
+    - Copy everything
+    - Visit your Github Account. Got to your profile and select the top right corner dropdown. Choose Settings
+    - Under settings, there is a tab on the left. Find SSH and GPG Key. Select it
+    - On top, you will find "New SSH Key" button. Select it. Give it a title (e.g "my-ssh-key") and Paste the key you copied into the key section
+    - Click "Add SSH Key" and you are all set
+
+Step 5: Go back to your terminal and make sure you are under the folder you intened to clone your repo into then Clone your repo with the below command
+     >> git clone git@github.com:saidatech/ecs-cluster-infrastructure.git

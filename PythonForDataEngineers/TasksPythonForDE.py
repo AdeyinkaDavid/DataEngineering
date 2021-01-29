@@ -14,7 +14,7 @@
 #counter2(7)
 
 
-########## BUBBLE SORT ##########################
+########## BUBBLE SORT
 z = [10, 7, 5, 3, 1 , 0.5]
 
 def MyFunc(a):

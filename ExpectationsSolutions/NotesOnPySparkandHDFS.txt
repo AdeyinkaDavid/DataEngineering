@@ -1,0 +1,139 @@
+NOTES ON PYSPARK: APACHE SPARK + Python == PySpark 
+
+To Support Python with Spark, PySpark was created. We can work with RDDs in python 
+
+RDD (Resilient Distributed Datasets): I a fundamental data structure of spark, and it is immutable, meaning that it
+cannot be modified after it is created. RDDs is a read only partitioned collection of records. It can be created 
+through deterministic operations on either data on stable storage. 
+
+Apache Spark makes use of RDD to achive faster and efficient MapReduce operations 
+
+MapReduce is widely adopted for processing and generating large datasets with a parallel distributed algorithm on 
+a cluster. It allows user to write parallel computations. 
+
+Apache spark supports interactive queries and iterative algorithms also. It leverages Apache hadoop for both storage
+and processing - meanwhile spark is very useful for real-time and batch processing. 
+
+WITH PYSPARK we can work with RDDs in python using a library called Py4j. PySpark also has/offers PySpark shell
+which links the Python API to the spark core. 
+
+SparkContext -> Is basically how we start/begin to use Spark functionality. It makes use of Py4J to launch a JVM 
+and creates a JavaSparkContxt - By default it is availabe as sc 
+
+SUMMARY MAP:
+Run spark application -> Drive program starts -> SparkContext gets initiated -> The drive program then runs 
+
+parameters of a SparkContext:
+class pyspark.SparkContext (
+    master = none -> It is the URL of the context 
+    appName = none -> It is the name of the job 
+    sparkhome = none -> It is the spark Installation directory
+    pyFiles = None -> The .zip or .py files to send to the cluser and add to the pYTHONpATH 
+    Environment = None -> Worker Nodes Environment variables
+    batchSize = 0 -> The number of Python objects represented as a single Java objects
+    serializer -> RDD Serializer
+    Conf = None -> An object of L{SparkConf} to set all the Spark properties 
+    Gateway = None -> Use an existing gateway and JVM, otherwise initializing a new JVM
+    JSC -> The JavaSparkContxt instance 
+    profiler_cls = A class of custom profiles user to do profiling. The default is pyspark.profiler.BasicProfiler 
+)
+NOTE: Master and appname are mostly used 
+
+from pyspark import SparkContext
+sc = SparkContext("Local", "First App") -> We define the paraments in here 
+
+NOTE: A very big fundamental in spark is RDD - > RDD Are elements that run and operate on multiple nodes to do a 
+parallel processing on a cluster. RDD's are fault tolerant just like Aurora DB, they automaticaly recover in 
+case of failure. We can apply multiple operations on this RDD's to achieve a certain task 
+
+We can use Transformation and action to apply operations on RDD. 
+
+TRANSFORMATION ON RDD's => These are the operation, which are applied on a RDD to create a new RDD. For example, 
+we make use of Filter, groupBy and map which are the examples of transformations. 
+
+ACTION ON RDDs => These are operations that are applied on RDD, which instructs Spark to perform computations
+and send the result back to the driver.
+
+BUT IN ORDER for me to be able to apply any operation in PySpark we need to create a PySpark RDD first. 
+
+Also when creating an RDD we say 
+        class pyspark.RDD(parameters)
+            words = sc.parallelize(
+                ["Isaac", "David", "Plato", "Data Engineering]
+            )
+
+---
+BROADCAST AND ACCUMULATOR
+--
+For parallel processing, Apache spark uses shared variables. A copy of shared variables goes on each node of 
+the cluster when the driver sends a task to the executor on the cluster - so that it can be used for performing tasks
+
+THERE ARE 2 TYPES OF SHARED VARIABLE SUPPORTED BY APACHE SPARK: 
+1) Broadcast: 
+2)
+
+
+NOTE ON PYSPARK -> HDFS AND HADOOP: 1/28/2021
+
+HDFS is an Hadoop file distributed system that is used to store and process files. 
+
+Just like git clone, we can mount our bucket on our HDFS 
+    hdfs dfs -mkdir /user/spark/dataset -> Create our HDFS Directory that we will store the files that we copy from out bucket into 
+    hdfs dfs -put ~/spark-data/* /user/spark/dataset -> then we put the Directory into our HDFS directory 
+
+And then, we can list the directories and use them for reaching the next directory, because we can't
+CD into our hdfs file system. 
+
+hdfs dfs -ls/
+
+Also after creating our cluster, we can SSH into out cluster, then to go into PySpark, we type 
+"pyspark" in the command line and then it will take us into pyspark. To exit out of pyspark, we exit out
+of it like a function "exit()"
+
+Also, in order for us to access files / read a csv file in our hdfs in PySpark we need to provide the 
+Hadoop name node path
+
+HOW TO READ A FILE FROM HDFS 
+-- I was able to figure out the cluster name and port by using this command 
+>>> hadoop fsck /user/spark/dataset/aids.csv -files -locations -blocks
+>>> df = spark.read.csv("hdfs://cluster-analysis1-m/user/spark/dataset/aids.csv") -> Cluster-analysis-1-m is my cluster name, and then /user/txt/filename is the filepath of my csv file
+>>> df.show()
+http://ip-172-31-66-79.ec2.internal:50070/fsck?ugi=hadoop&files=1&locations=1&blocks=1&path=%2Fuser%2Fspark%2Fdataset%2Faids.csv
+df = spark.read.csv("hdfs://ip-172-31-66-79.ec2.internal/user/spark/dataset/aids.cv)
+HADOOP NAME NODE: cluster-analysis1-m:9870 **9870** is my port name  ->
+
+spark.read.csv("hdfs://cluster-analysis1-m:9870/aids.csv")
+
+########## TO DROP COLUMN IN PYSPARK DATAFRAME #####################
+For example, lets say we want to create a DataFrame from a .csv file and we want to drop a column from 
+the raw data (.csv file) before we create a datafram from the .csv file. So what we do is, we make use of the
+"drop" command to drop the columns. If we have col1,col2,col3,col4, col5, and we want to drop col1 and col2
+Then we can use the drop cmd like this -> df2 = df.drop('col1','col2'), and then this automatically drops it 
+To see the raw data schema, then we can say df.printSchema()
+
+########## TO CREATE/DERIVE A COLUMN IN A DATAFRAME####
+To create/derive a column in a DataFrame, we use a DataFrame function called "WithColumn". For example, 
+we say ""df4 = df.withColum("DerivedColumn",col("salary")*-1)"" --> What this will do is that, 
+it will create a column called "DerivedColumn" by multiplying a column called "salary" with a value of -1. 
+
+-- To create a column thats will store the year of currentdate, then we first of all have to import functions pyspark sql functions
+>>> from pyspark.sql.functions import current_date
+>>> from pyspark.sql.functions import year
+>>> from pyspark.sql.functions import col
+>>> from pyspark.sql.functions import lit
+
+--- To change datatype --------------------
+>>> df = df.withColumn("_c1",col("_c1").cast("Integer")) 
+>>> df.printSchema()
+(")
+-- To create a new column ------------
+df = df.withColumn("Currentdt", lit(year(current_date()))) -> This will create a column named "currentdt" that will store the year of the current date 
+
+
+--To save DataFrame to a csv file and save it to our HDFS ----------------
+NOTE: We can also use .csv instead of .save 
+df.coalesce(1).write.format('com.databricks.spark.csv').options(header='true').csv("hdfs://cluster-analysis1-m/user/spark/dataset/aids.csv")
+
+
+---- To run/initialize pyspark in yarn mode------
+we can run the script -> pyspark --master yarn --conf spark.ui.port=12890

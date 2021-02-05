@@ -1,4 +1,6 @@
-1.	Create a VPC that will have a public subnet and private subnet, and then we should be able to deploy a server into that VPC, and be able to SSH into the private subnet from the public subnet
+1(a). Download a cat image, then create a folder and drop the cat image into the folder and then copy/move
+        the image into your amazon s3 bucket 
+1(b).	Create a VPC that will have a public subnet and private subnet, and then we should be able to deploy a server into that VPC, and be able to SSH into the private subnet from the public subnet
 2.	Create a GITHUB Account
 3.	Create a Python Script and then Run a Python script in our server and the script should output the result and then, we should load the result of our Python script into a .txt file, and then we should copy or move the file into an S3 Bucket in AWS
 4.	Create a CRONJOB that runs the python script we created in number 3 every hour, and then there should be a different result for each time it runs. Each result will be in a different file that will be named result(datetime).txt and it will save it in our target folder.
@@ -25,3 +27,19 @@ THINGS WE CAN DO WITH DATA PROC:
 
 9. Create a GCP Project 
 10. Read about PySpark and understand how it works for tomorrow 
+
+11. After reading the csv file from HDFS in PySpark -> Use PySpark to remove 2 columns from the data then Create a Column called 
+    YearDifference that will calculate the difference between the current date and the Year column in the
+    aids dataset, and then say "NoOfYears ago". and then load the transformed file into my GCP Bucket 
+
+MY OWN PERSONAL EXPECTATION:
+-- Upload a dataset into my hdfs directory, and then create a dataframe from the .csv file and perform
+    some transformation such as removing the null value, and then deriving a current date column from it
+    and then load the transformed dataframe into the csv file -> then load it into my gcp bucket 
+
+12(a) Clone into git clone https://github.com/dgadiraju/data and then export the retail_db into my hdfs filepath 
+        then study CCA-175 section 4 
+12. Study Pyspark and Hadoop course on Udemy section 4 and then do the project on it 
+13. Read about EMR and then spin up an EMR Cluster in AWS and do the same data preprocessing I did with
+    GCP DataProc with AWS EMR 
+14. Create EMR with cloudformation 

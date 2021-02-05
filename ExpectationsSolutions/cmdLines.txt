@@ -1,5 +1,12 @@
 ssh -i file.pem ec2-user@IP-Address -> To connect to my ec2 instance 
 ./ -> To run my .sh file 
+chmod +x filename -> Grant full permission to a file 
+rm filename -> To delete a file name 
+wget filelink -> Can be used to download a file from the internet directly into our directory 
+mkdir -p foldername/filename -. To create a parent folder with a child file 
+sudo yum update -> To update our ec2 instance 
+yum install httpd -> To install our Apache server 
+python nameoffile.py > command |$ tee -a output.txt -> Output the resule of a script to a file and see it run visibly 
 git clone https://github.com/AdeyinkaDavid/DataEngineering.git -> To clone my github repo
 git add . -> To add the file to github repo
 git commit -m "" -> To commit the file to my github repo
@@ -12,15 +19,39 @@ aws s3 cp filename S3BucketDestination -> To copy a file to s3 bucket
 mv sourceFilePath DestinationFilePath -> To move a file from one filepath to another 
 aws s3 mv filename S3BucketDestination -> To move a file to s3 bucket
 cd -> To change directory to any filepath 
+
+
+----- How to create Virtual Environment in Python ----------
 py -m venv venv -> To create a virtual environment
  .\venv\Scripts\activate -> To activate our Python virtual environment 
 
-
+################TO CREATE A CLUSTER IN GCP DATAPROC#################
  gcloud beta dataproc clusters create cluster-analysis1 --enable-component-gateway \
           --region us-east4 --zone us-east4-a --master-machine-type n1-standard-8 \
           --master-boot-disk-size 500 --num-workers 2 --worker-machine-type n1-standard-8 \
           --worker-boot-disk-size 500 --image-version 1.5-debian10 \
           --optional-components ANACONDA,HIVE_WEBHCAT,JUPYTER --project static-dock-286320
+
+gsutil cp gs://isaacdataprocess/ /var/www/file -> To copy a file from  GCP Bucket to our HDFS File system 
+
+
+-- DATA PREPROCESSING PROCESS 
+
+hdfs dfs -mkdir /user/spark/dataset -> Create a file directory in HDFS
+
+hdfs dfs -ls -> To list the files in our HDFS
+
+hdfs dfs -cp source hdfsfilepath -> To load the file from any bucket(S3 or GCP) to our HDFS File Path 
+NOTE: hadoop fs -cp -> Can also be used in place of hdfs dfs -cp 
+
+hdfs dfs -cp s3://isaacdataprocess/emrpractice/aids.csv /user/spark/dataset -> To load file from our S3 Bucket to HDFS
+
+
+PYSPARK
+
+df = spark.read.csv("hdfs://ip-172-31-66-79/user/spark/dataset/aids.csv") -> To read an hdfs file with an ec2 IP Address
+
+
 
 
 

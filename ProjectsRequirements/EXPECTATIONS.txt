@@ -43,3 +43,6 @@ MY OWN PERSONAL EXPECTATION:
 13. Read about EMR and then spin up an EMR Cluster in AWS and do the same data preprocessing I did with
     GCP DataProc with AWS EMR 
 14. Create EMR with cloudformation 
+15. Create a Lambda function that will trigger the cloudformation script at a specific time using Cloudwatch event
+
+16. Read on FLUME

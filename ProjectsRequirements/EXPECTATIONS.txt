@@ -46,3 +46,20 @@ MY OWN PERSONAL EXPECTATION:
 15. Create a Lambda function that will trigger the cloudformation script at a specific time using Cloudwatch event
 
 16. Read on FLUME
+
+
+
+EXPECTATIONS IN PYTHON CLASS: 
+Create a function that will pick up the data, clean each txt file First, Then read it as csv with pandas 
+save it as a csv 
+Then create the big table from the csv file 
+
+--No using of SQL Functions 
+
+-- Pick up the data (Returned_Items, Regional_Manger, Sales_Transactions)
+-- Clean the data using pandas 
+-- Read the cleaned data into csv 
+-- Create individual tables from each csv file 
+-- Merge/Join all the tables into one huge sales table 
+
+End Goal: To have a huge dataframe of our sales data 

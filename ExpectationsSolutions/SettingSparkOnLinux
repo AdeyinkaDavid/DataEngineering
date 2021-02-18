@@ -1,0 +1,18 @@
+To setup spark on AWS EC2 instance
+First we need to make sure we are SSH'd into our EC2 Instance 
+
+Then we install Python
+
+sudo pip3 yum install python 
+
+sudo pip3 yum install jupyter 
+
+pwd -> To print/see our current working directory 
+
+wget http://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-hadoop2.7.tgz  -> To install the current spark agent 
+
+ sudo openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+
+ /home/ec2-user/spark-3.0.1-bin-hadoop2.7
+
+/c/Users/Isaac David/Downloads

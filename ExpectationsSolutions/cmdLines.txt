@@ -30,7 +30,7 @@ py -m venv venv -> To create a virtual environment
           --region us-east4 --zone us-east4-a --master-machine-type n1-standard-8 \
           --master-boot-disk-size 500 --num-workers 2 --worker-machine-type n1-standard-8 \
           --worker-boot-disk-size 500 --image-version 1.5-debian10 \
-          --optional-components ANACONDA,HIVE_WEBHCAT,JUPYTER --project static-dock-286320
+          --optional-components ANACONDA,HIVE_WEBHCAT,JUPYTER --project firstgcpproject-303102
 
 gsutil cp gs://isaacdataprocess/ /var/www/file -> To copy a file from  GCP Bucket to our HDFS File system 
 

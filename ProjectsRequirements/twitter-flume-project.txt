@@ -1,0 +1,90 @@
+####    STEPS TO INSTALL FLUME ON A CLUSTER ####
+
+cd ~
+
+wget https://apache.claz.org/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz #You need to install the current apache flume from http://www.apache.org/dyn/closer.lua/flume/1.9.0/apache-flume-1.9.0-bin.tar.gz
+
+tar xfz apache-flume-1.9.0-bin
+
+ls -a #To list all the files including the hidden one to make sure you have .bashrc and the apache installed 
+
+rm apache-flume-1.9.0-bin.tar.gz #To extract the tar file 
+
+vim .bashrc 
+        #The parameters below needs to be at the bottom of the .bashrc file 
+        export FLUME_HOME=/home/dataflair/apache-flume-1.9.0-bin #This file path should be replaced with yours, if you do not know your file path run "find / -name apache-flume-1.9.0-bin.tar.gz" and whatever path it is in is the file path 
+        export PATH=$PATH:$FLUME_HOME/bin
+        #After doing that-> click esc and then enter ":wq!" to save the current changes you made 
+
+source .bashrc #This refreshes the .bashrc file just to make sure the changes take place 
+
+flume-ng version      #If it doesn't say "flume-ng command not found" then it ran 
+
+-- Go into conf in our Apache-flume-1.9.0-bin 
+
+# Naming the components on the current agent. 
+TwitterAgent.sources = Twitter 
+TwitterAgent.channels = MemChannel 
+TwitterAgent.sinks = HDFS
+  
+# Describing/Configuring the source 
+TwitterAgent.sources.Twitter.type = org.apache.flume.source.twitter.TwitterSource
+TwitterAgent.sources.Twitter.consumerKey = QyqgfjG2mrNSMIbViUJkpDfxO
+TwitterAgent.sources.Twitter.consumerSecret = 9AT1unbSmX6wQYyCp29EqPgc4NcXVH2P0ifwGnHkIz62SRp3h9
+TwitterAgent.sources.Twitter.accessToken = 1360474199643607040-W8emI0MghkvcV7iCsTVlGDSyDICxPd
+TwitterAgent.sources.Twitter.accessTokenSecret = hitrZTgQ8iwAKon2TeeIYIFGFukzx6VaqWjGHBLTpKQIE
+TwitterAgent.sources.Twitter.keywords = ocugen
+  
+# Describing/Configuring the sink 
+
+TwitterAgent.sinks.HDFS.type = hdfs 
+TwitterAgent.sinks.HDFS.hdfs.path = hdfs:///user/Hadoop/twitter_data
+TwitterAgent.sinks.HDFS.hdfs.fileType = DataStream 
+TwitterAgent.sinks.HDFS.hdfs.writeFormat = Text 
+TwitterAgent.sinks.HDFS.hdfs.batchSize = 1000
+TwitterAgent.sinks.HDFS.hdfs.rollSize = 0 
+TwitterAgent.sinks.HDFS.hdfs.rollCount = 10000 
+ 
+# Describing/Configuring the channel 
+TwitterAgent.channels.MemChannel.type = memory 
+TwitterAgent.channels.MemChannel.capacity = 10000 
+TwitterAgent.channels.MemChannel.transactionCapacity = 100
+  
+# Binding the source and sink to the channel 
+TwitterAgent.sources.Twitter.channels = MemChannel
+TwitterAgent.sinks.HDFS.channel = MemChannel 
+
+log4j.logger.info.release.Scheduler=INFO, scheduler 
+log4j.additivity.info.release.scheduler=false
+
+------------------------------------------------------------
+
+TwitterAgent.sources = Twitter
+TwitterAgent.channels = MemChannel
+TwitterAgent.sinks = HDFS
+
+TwitterAgent.sources.Twitter.type = org.apache.flume.source.twitter.TwitterSource
+TwitterAgent.sources.Twitter.channels = MemChannel
+TwitterAgent.sources.Twitter.consumerKey = QyqgfjG2mrNSMIbViUJkpDfxO
+TwitterAgent.sources.Twitter.consumerSecret = 9AT1unbSmX6wQYyCp29EqPgc4NcXVH2P0ifwGnHkIz62SRp3h9
+TwitterAgent.sources.Twitter.accessToken = 1360474199643607040-W8emI0MghkvcV7iCsTVlGDSyDICxPd
+TwitterAgent.sources.Twitter.accessTokenSecret = hitrZTgQ8iwAKon2TeeIYIFGFukzx6VaqWjGHBLTpKQIE
+TwitterAgent.sources.Twitter.keywords = ocugen
+
+################## SINK #################################
+TwitterAgent.sinks.HDFS.channel = MemChannel
+TwitterAgent.sinks.HDFS.type = hdfs
+TwitterAgent.sinks.HDFS.hdfs.path = hdfs:///user/Hadoop/twitter_data
+TwitterAgent.sinks.HDFS.hdfs.fileType = DataStream
+TwitterAgent.sinks.HDFS.hdfs.writeFormat = Text
+
+TwitterAgent.sinks.HDFS.hdfs.batchSize = 10
+TwitterAgent.sinks.HDFS.hdfs.rollSize = 0
+TwitterAgent.sinks.HDFS.hdfs.rollInterval = 600
+TwitterAgent.sinks.HDFS.hdfs.rollCount = 10000
+
+#################### CHANNEL #########################
+TwitterAgent.channels.MemChannel.type = memory
+TwitterAgent.channels.MemChannel.capacity = 100
+#default - TwitterAgent.channels.MemChannel.capacity = 100
+TwitterAgent.channels.MemChannel.transactionCapacity = 100

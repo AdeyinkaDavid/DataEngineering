@@ -1,0 +1,13 @@
+wget http://downloads.typesafe.com/scala/2.11.6/scala-2.11.6.tgz
+
+tar -xzvf scala-2.11.6.tgz
+rm -rf scala-2.11.6.tgz
+
+vim ~/.bashrc
+
+export SCALA_HOME=/home/ec2-user/scala-2.11.6
+export PATH=$PATH:/home/ec2-user/scala-2.11.6/bin
+
+source ~/.bashrc
+
+scala -version

@@ -137,3 +137,9 @@ df.coalesce(1).write.format('com.databricks.spark.csv').options(header='true').c
 
 ---- To run/initialize pyspark in yarn mode------
 we can run the script -> pyspark --master yarn --conf spark.ui.port=12890
+
+
+######CODE TO LOAD FROM FILE FROM GITHUB TO DATABRICKS DBFS ########
+import urllib.request
+urllib.request.urlretrieve("https://github.com/AdeyinkaDavid/DataEngineering/blob/master/sample_linear_regression_data.txt","/tmp/sample_linear_regression_data.txt") 
+dbutils.fs.mv("file:/tmp/sample_linear_regression_data.txt", "dbfs:/data/sample_linear_regression_data.txt")

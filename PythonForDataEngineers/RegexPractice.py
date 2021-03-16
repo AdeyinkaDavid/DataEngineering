@@ -1,10 +1,12 @@
-import re 
+workon = 'BED'
+workofficetoday = []
 
-firstword = 
 
+if workon == 'BED':
+    workofficetoday.append(workon)
+    print(f"Work is on my {workofficetoday}")
+else:
+    print('Nope')
+    #return workofficetoday
 
-reg = re.compile()
-
-my_group = reg.findall()
-
-##Understanding Regex --- Need to do more studying
+print(workofficetoday)

@@ -1,0 +1,8 @@
+To read and get data 
+
+First we want to get the tables from the file path\
+
+Then after that we can go to another python file and call the py file that we have the tables data stored in 
+
+We create a py file that will read the tables , and then create another py file that will call the table and 
+it is wherre we store the file. 

@@ -1,0 +1,11 @@
+STEPS: 
+NOTE: Non source code files should not be going to the Git repo, and they should enter the .gitignore file 
+
+vi .gitignore -> Add the irrelevant folders and files in it 
+git add . -> Specify the files and folder name that we are adding to out github repo 
+git commit -m -> If new to git repo, it is better not to use "-m", because it will add all the files in the cwd and push it to the local server 
+git push -> After I am done 
+
+Instead, we use "git commit" and then review whatever is in there, but our .gitignore file should be there 
+
+-- Understand GIT BRANCHING for collaborative programming 

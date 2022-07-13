@@ -9,7 +9,9 @@
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation"
+				"type": "AzureBlobFSLocation",
+				"fileName": "weather_*.json",
+				"fileSystem": "usa"
 			}
 		}
 	}

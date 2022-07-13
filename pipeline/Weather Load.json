@@ -209,6 +209,7 @@
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"recursive": true,
+						"wildcardFileName": "weather_*.json",
 						"enablePartitionDiscovery": false
 					}
 				}

@@ -50,7 +50,14 @@
 							"useTypeDefault": true
 						}
 					},
-					"enableStaging": false,
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "admin_data_lake",
+							"type": "LinkedServiceReference"
+						},
+						"path": "stage"
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [

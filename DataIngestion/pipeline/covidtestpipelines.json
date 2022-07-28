@@ -34,8 +34,19 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
+		"variables": {
+			"loadTime": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }

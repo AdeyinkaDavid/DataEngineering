@@ -41,6 +41,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "raw",
+							"folderpath": "populationFolder",
 							"filename": "population_by_age.tsv.gz"
 						}
 					}

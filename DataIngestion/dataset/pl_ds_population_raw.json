@@ -35,6 +35,7 @@
 				}
 			},
 			"columnDelimiter": "\t",
+			"compressionCodec": "gzip",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""

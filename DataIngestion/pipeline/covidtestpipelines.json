@@ -36,10 +36,14 @@
 				]
 			},
 			{
-				"name": "Set variable1",
+				"name": "Set LoadTime",
 				"type": "SetVariable",
 				"dependsOn": [],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "loadTime",
+					"value": ""
+				}
 			}
 		],
 		"variables": {

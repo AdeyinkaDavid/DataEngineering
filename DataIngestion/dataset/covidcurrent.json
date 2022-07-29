@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "raw"
+				"folderPath": "populationCurrent",
+				"fileSystem": "current"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

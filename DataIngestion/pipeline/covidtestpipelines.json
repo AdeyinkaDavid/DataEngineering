@@ -89,6 +89,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"expression": {
+						"value": "@equals(activity('check if file exists').output, true )",
+						"type": "Expression"
+					},
 					"ifTrueActivities": [
 						{
 							"name": "Copy Population Data",

@@ -47,7 +47,7 @@
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ".tsv"
 						}
 					},
 					"enableStaging": false,

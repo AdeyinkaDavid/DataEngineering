@@ -65,7 +65,7 @@
 						"referenceName": "pl_ds_population_raw",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": "raw",
+							"container": "population_by_age.tsv.gzpopulation_by_age.tsv.gz",
 							"folderpath": "populationFolder",
 							"filename": "population_by_age.tsv.gz"
 						}
@@ -135,7 +135,12 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "pl_ds_population_raw",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "raw",
+							"folderpath": "populationFolder",
+							"filename": "population_by_age.tsv.gz"
+						}
 					},
 					"timeout": "1.00:00:00",
 					"sleep": 10

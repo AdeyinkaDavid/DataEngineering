@@ -67,12 +67,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "pl_ds_population_raw",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "current",
-							"folderpath": "populationCurrent"
-						}
+						"referenceName": "covidcurrent",
+						"type": "DatasetReference"
 					}
 				]
 			},

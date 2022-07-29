@@ -3,82 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy Population Data",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Set LoadTime",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".tsv"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "pl_ds_population_raw",
-						"type": "DatasetReference",
-						"parameters": {
-							"container": "population_by_age.tsv.gzpopulation_by_age.tsv.gz",
-							"folderpath": "populationFolder",
-							"filename": "population_by_age.tsv.gz"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "covidcurrent",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "Set LoadTime",
 				"type": "SetVariable",
 				"dependsOn": [],
@@ -144,6 +68,92 @@
 					},
 					"timeout": "1.00:00:00",
 					"sleep": 10
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set LoadTime",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"ifTrueActivities": [
+						{
+							"name": "Copy Population Data",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".tsv"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "pl_ds_population_raw",
+									"type": "DatasetReference",
+									"parameters": {
+										"container": "population_by_age.tsv.gzpopulation_by_age.tsv.gz",
+										"folderpath": "populationFolder",
+										"filename": "population_by_age.tsv.gz"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "covidcurrent",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
 				}
 			}
 		],

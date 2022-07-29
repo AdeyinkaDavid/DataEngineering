@@ -96,7 +96,7 @@
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
-						"activity": "Validation1",
+						"activity": "check if file exists",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -128,7 +128,7 @@
 				}
 			},
 			{
-				"name": "Validation1",
+				"name": "check if file exists",
 				"type": "Validation",
 				"dependsOn": [],
 				"userProperties": [],

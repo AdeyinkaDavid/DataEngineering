@@ -78,14 +78,23 @@
 									"referenceName": "DS_restApiPractice",
 									"type": "DatasetReference",
 									"parameters": {
-										"QueryParameters": "?page=1"
+										"QueryParameters": {
+											"value": "@concat('?page=',activity('Get Response').output)",
+											"type": "Expression"
+										}
 									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "DS_RestAPI_ADLS",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"fileName": {
+											"value": "@concat('ApiPage',item())",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}

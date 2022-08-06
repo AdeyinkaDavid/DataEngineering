@@ -129,7 +129,10 @@
 									"referenceName": "DS_restApiPractice",
 									"type": "DatasetReference",
 									"parameters": {
-										"QueryParameters": "?page=1"
+										"QueryParameters": {
+											"value": "?page=@{item()}",
+											"type": "Expression"
+										}
 									}
 								}
 							],
@@ -139,7 +142,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fileName": {
-											"value": "apiPage1",
+											"value": "@concat('apiPage',item(),'.csv')",
 											"type": "Expression"
 										}
 									}

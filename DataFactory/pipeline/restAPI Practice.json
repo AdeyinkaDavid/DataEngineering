@@ -78,10 +78,7 @@
 									"referenceName": "DS_restApiPractice",
 									"type": "DatasetReference",
 									"parameters": {
-										"QueryParameters": {
-											"value": "@concat('?page=',activity('Get Response').output)",
-											"type": "Expression"
-										}
+										"QueryParameters": "?page=1"
 									}
 								}
 							],
@@ -91,7 +88,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fileName": {
-											"value": "@concat('ApiPage',item())",
+											"value": "apiPage1",
 											"type": "Expression"
 										}
 									}

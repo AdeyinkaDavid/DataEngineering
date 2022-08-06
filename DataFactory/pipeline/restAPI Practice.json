@@ -77,42 +77,11 @@
 									"mappings": [
 										{
 											"source": {
-												"path": "$['page']"
-											},
-											"sink": {
-												"name": "page"
-											}
-										},
-										{
-											"source": {
-												"path": "$['per_page']"
-											},
-											"sink": {
-												"name": "per_page"
-											}
-										},
-										{
-											"source": {
-												"path": "$['total']"
-											},
-											"sink": {
-												"name": "total"
-											}
-										},
-										{
-											"source": {
-												"path": "$['total_pages']"
-											},
-											"sink": {
-												"name": "total_pages"
-											}
-										},
-										{
-											"source": {
 												"path": "$['data'][0]['id']"
 											},
 											"sink": {
-												"name": "id"
+												"name": "id",
+												"type": "String"
 											}
 										},
 										{
@@ -120,7 +89,8 @@
 												"path": "$['data'][0]['email']"
 											},
 											"sink": {
-												"name": "email"
+												"name": "email",
+												"type": "String"
 											}
 										},
 										{
@@ -128,7 +98,8 @@
 												"path": "$['data'][0]['first_name']"
 											},
 											"sink": {
-												"name": "first_name"
+												"name": "first_name",
+												"type": "String"
 											}
 										},
 										{
@@ -136,7 +107,8 @@
 												"path": "$['data'][0]['last_name']"
 											},
 											"sink": {
-												"name": "last_name"
+												"name": "last_name",
+												"type": "String"
 											}
 										},
 										{
@@ -144,23 +116,8 @@
 												"path": "$['data'][0]['avatar']"
 											},
 											"sink": {
-												"name": "avatar"
-											}
-										},
-										{
-											"source": {
-												"path": "$['support']['url']"
-											},
-											"sink": {
-												"name": "url"
-											}
-										},
-										{
-											"source": {
-												"path": "$['support']['text']"
-											},
-											"sink": {
-												"name": "text"
+												"name": "avatar",
+												"type": "String"
 											}
 										}
 									],

@@ -65,7 +65,10 @@
 							"inputs": [
 								{
 									"referenceName": "DS_restApiPractice",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"QueryParameters": "?page=1"
+									}
 								}
 							]
 						}

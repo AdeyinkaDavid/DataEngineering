@@ -60,6 +60,17 @@
 										"supportRFC5988": "true"
 									}
 								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
@@ -69,6 +80,12 @@
 									"parameters": {
 										"QueryParameters": "?page=1"
 									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_RestAPI_ADLS",
+									"type": "DatasetReference"
 								}
 							]
 						}

@@ -1,0 +1,17 @@
+{
+	"name": "DS_restApiPractice",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_RestService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"QueryParameters": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}

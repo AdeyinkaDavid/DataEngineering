@@ -18,17 +18,37 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "USE AdventureWorksDW\nSELECT \nQUOTENAME(table_Schema) + '.' + QUOTENAME(TABLE_NAME) AS Table_Name, TABLE_CATALOG\n   FROM information_Schema.tables\n   WHERE TABLE_TYPE = 'BASE TABLE'",
+							"value": "USE AdventureWorksDW\nSELECT \nQUOTENAME(table_Schema) + '.' + QUOTENAME(TABLE_NAME) AS Table_Name, TABLE_CATALOG, '1' AS process_type\n   FROM information_Schema.tables\n   WHERE TABLE_TYPE = 'BASE TABLE'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "DS_SQLSERVER",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ASQLDB_PIPELINE_PARAMETER",
 						"type": "DatasetReference"
 					}
 				]

@@ -1,0 +1,9 @@
+{
+	"name": "acadf-cvdo",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ee9fbcbb-61a5-4b19-b64b-e52972d2246f",
+		"tenantId": "3617ef9b-98b4-40d9-ba43-e1ed6709cf0d"
+	}
+}

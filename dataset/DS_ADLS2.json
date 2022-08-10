@@ -1,0 +1,18 @@
+{
+	"name": "DS_ADLS2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_DataMigration",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

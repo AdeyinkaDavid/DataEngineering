@@ -1,0 +1,29 @@
+{
+	"name": "DS_ASQLDB_PIPELINE_PARAMETER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQlDB_DM",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Table_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TABLE_CATALOG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "process_type",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "pipeline_parameter"
+		}
+	}
+}
